@@ -6,36 +6,183 @@
     <title>Kimmy Archive - Kimmy JKT48</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #fff0f3; color: #333; line-height: 1.6; }
         
-        header { background: linear-gradient(135deg, #ff758c, #ff7eb3); color: white; padding: 35px 20px; text-align: center; }
-        header h1 { font-size: 2.2em; margin-bottom: 5px; }
-        header p { font-size: 1em; opacity: 0.95; }
+        html, body { 
+            background-color: #fff0f3 !important; 
+            color: #333333 !important; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            line-height: 1.6; 
+        }
         
-        nav { background-color: #ffffff; display: flex; justify-content: center; flex-wrap: wrap; box-shadow: 0 2px 8px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 100; }
-        nav a { color: #555; padding: 14px 18px; text-decoration: none; font-weight: 600; font-size: 0.9em; transition: 0.3s; }
-        nav a:hover { color: #ff758c; background-color: #ffe6ea; }
+        header { background: linear-gradient(135deg, #ff758c, #ff7eb3) !important; color: #ffffff !important; padding: 35px 20px; text-align: center; }
+        header h1 { font-size: 2.2em; margin-bottom: 5px; color: #ffffff !important; }
+        header p { font-size: 1em; opacity: 0.95; color: #ffffff !important; }
+        
+        nav { background-color: #ffffff !important; display: flex; justify-content: center; flex-wrap: wrap; box-shadow: 0 2px 8px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 100; }
+        nav a { color: #555555 !important; padding: 14px 18px; text-decoration: none; font-weight: 600; font-size: 0.9em; transition: 0.3s; }
+        nav a:hover { color: #ff758c !important; background-color: #ffe6ea !important; }
         
         .container { max-width: 850px; margin: 25px auto; padding: 0 15px; }
-        .card { background: white; padding: 25px; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); margin-bottom: 25px; }
-        .card h2 { color: #ff758c; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
         
-        /* Profile & Biodata Style */
+        .card { background-color: #ffffff !important; color: #333333 !important; padding: 25px; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.06); margin-bottom: 25px; }
+        .card h2 { color: #ff758c !important; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
+        .card p, .card td { color: #333333 !important; }
+        
         .profile-container { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; margin-top: 15px; }
         .profile-img { width: 180px; height: 180px; object-fit: cover; border-radius: 50%; border: 4px solid #ff758c; box-shadow: 0 4px 10px rgba(0,0,0,0.1); background-color: #ffe6ea; }
         .bio-table { flex: 1; min-width: 250px; border-collapse: collapse; }
-        .bio-table td { padding: 8px 12px; border-bottom: 1px solid #ffe6ea; font-size: 0.95em; }
+        .bio-table td { padding: 10px 12px; border-bottom: 1px solid #ffe6ea; font-size: 0.95em; color: #333333 !important; }
         .bio-table tr:last-child td { border-bottom: none; }
-        .bio-label { font-weight: bold; color: #ff758c; width: 40%; }
+        .bio-label { font-weight: bold; color: #ff758c !important; width: 40%; }
 
-        .badge { background: #ff758c; color: white; font-size: 0.75em; padding: 3px 8px; border-radius: 10px; font-weight: normal; }
+        .badge { background: #ff758c !important; color: #ffffff !important; font-size: 0.75em; padding: 3px 8px; border-radius: 10px; font-weight: normal; }
         .update-item { border-bottom: 1px dashed #eee; padding: 12px 0; }
         .update-item:last-child { border-bottom: none; }
-        .update-date { font-size: 0.8em; color: #888; }
+        .update-date { font-size: 0.8em; color: #888888 !important; }
 
-        /* Grid Galeri */
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px; }
-        .gallery-grid img { width: 100%; height: 220px; object-fit: cover; border-radius: 12px; transition: transform 0.3s; background-color: #ffe6ea; }
+        .gallery-grid img { width: 100%; height: 240px; object-fit: cover; border-radius: 12px; transition: transform 0.3s; background-color: #ffe6ea; }
         .gallery-grid img:hover { transform: scale(1.03); }
 
-        /* Tom
+        .btn-link { display: inline-block; background: #ff758c !important; color: #ffffff !important; padding: 12px 24px; text-decoration: none; border-radius: 25px; font-weight: bold; font-size: 0.95em; transition: background 0.3s; margin-top: 10px; margin-right: 8px; }
+        .btn-link:hover { background: #ff5271 !important; }
+        
+        footer { text-align: center; padding: 25px; color: #888888 !important; font-size: 0.85em; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Kimmy Archive 🐹</h1>
+        <p>Arsip Digital & Update Kimmy JKT48</p>
+    </header>
+
+    <nav>
+        <a href="#home">🏠 Home</a>
+        <a href="#biodata">🎀 Biodata</a>
+        <a href="#gallery">📸 Galeri</a>
+        <a href="#updates">📰 Updates</a>
+        <a href="#schedule">📅 Jadwal</a>
+        <a href="#messages">💌 Pesan</a>
+    </nav>
+
+    <div class="container">
+        <!-- HOME SECTION -->
+        <section id="home" class="card">
+            <h2>Selamat Datang! ✨</h2>
+            <p>Ruang arsip khusus untuk mendokumentasikan perjalanan, momen, jadwal show, dan kabar terbaru seputar <strong>Kimmy JKT48</strong>.</p>
+            <p style="margin-top: 10px; font-size: 0.9em; color: #666666 !important;"><em>Dikelola secara otomatis oleh Sann.</em></p>
+        </section>
+
+        <!-- BIODATA SECTION -->
+        <section id="biodata" class="card">
+            <h2>🎀 Profil & Biodata Kimmy</h2>
+            <div class="profile-container">
+                <img src="https://jkt48.com/images/member/profile/victoria_kimberly.jpg" alt="Victoria Kimberly JKT48" class="profile-img" onerror="this.src='https://jkt48.com/images/member/profile/kimmy_jkt48.jpg'">
+                <table class="bio-table">
+                    <tr>
+                        <td class="bio-label">Nama Lengkap</td>
+                        <td>Victoria Kimberly</td>
+                    </tr>
+                    <tr>
+                        <td class="bio-label">Nama Panggilan</td>
+                        <td>Kimmy</td>
+                    </tr>
+                    <tr>
+                        <td class="bio-label">Tanggal Lahir</td>
+                        <td>8 Maret 2010</td>
+                    </tr>
+                    <tr>
+                        <td class="bio-label">Golongan Darah</td>
+                        <td>AB</td>
+                    </tr>
+                    <tr>
+                        <td class="bio-label">Horoskop</td>
+                        <td>Pisces</td>
+                    </tr>
+                    <tr>
+                        <td class="bio-label">Tinggi Badan</td>
+                        <td>158 cm</td>
+                    </tr>
+                    <tr>
+                        <td class="bio-label">Generasi / Status</td>
+                        <td>Generasi 12 JKT48</td>
+                    </tr>
+                </table>
+            </div>
+            <div style="margin-top: 15px; text-align: center;">
+                <a href="https://jkt48.com/member/detail?member=victoria-kimberly-244&type=PASSION" target="_blank" class="btn-link">🌸 Lihat Detail di JKT48.com</a>
+            </div>
+        </section>
+
+        <!-- GALLERY SECTION -->
+        <section id="gallery" class="card">
+            <h2>📸 Galeri Foto</h2>
+            <p style="color: #666666 !important; font-size: 0.9em;">Dokumentasi foto Kimmy JKT48.</p>
+            <div class="gallery-grid">
+                <img src="https://jkt48.com/images/member/profile/victoria_kimberly.jpg" alt="Foto Profil Kimmy JKT48" onerror="this.src='https://jkt48.com/images/member/profile/kimmy_jkt48.jpg'">
+                <img src="https://jkt48.com/images/banner.home.jkt48.jpg" alt="JKT48 Event Banner" style="object-fit: cover;">
+            </div>
+        </section>
+
+        <!-- UPDATES SECTION (AUTO) -->
+        <section id="updates" class="card">
+            <h2>📰 Updates Terbaru <span class="badge">Live Auto Feed</span></h2>
+            <div id="feed-container">
+                <p style="color: #777777 !important;">⏳ Memuat update otomatis seputar Kimmy...</p>
+            </div>
+        </section>
+
+        <!-- SCHEDULE SECTION -->
+        <section id="schedule" class="card">
+            <h2>📅 Jadwal Show & Teater</h2>
+            <div style="background: #fff0f3; padding: 15px; border-radius: 10px; margin-top: 10px;">
+                <h3 style="color: #ff758c !important; font-size: 1em;">🎭 Schedule Teater & Event Resmi JKT48</h3>
+                <p style="font-size: 0.9em; color: #555555 !important; margin-top: 5px;">Pantau jadwal show teater, line-up member, serta pengumuman event terbaru Kimmy langsung dari situs resmi.</p>
+                <a href="https://jkt48.com/schedule/list" target="_blank" class="btn-link">👉 Cek Jadwal Show di JKT48.com</a>
+            </div>
+        </section>
+
+        <!-- MESSAGES SECTION -->
+        <section id="messages" class="card" style="text-align: center;">
+            <h2>💌 Kirim Pesan untuk Kimmy</h2>
+            <p style="color: #666666 !important; margin-top: 5px;">Punya ucapan, dukungan, atau fan letter yang mau disampaikan?</p>
+            <!-- MASUKKAN LINK GOOGLE FORM KAMU DI SINI -->
+            <a href="PASTE_LINK_GOOGLE_FORM_KAMU_DI_SINI" target="_blank" class="btn-link" style="margin-top: 15px; display: inline-block;">✍️ Tulis Pesan / Support</a>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; Kimmy Archive — Dibuat oleh Sann</p>
+    </footer>
+
+    <!-- SCRIPT AUTO UPDATE -->
+    <script>
+        async function fetchAutoUpdates() {
+            const feedContainer = document.getElementById('feed-container');
+            try {
+                const res = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fnews.google.com%2Frss%2Fsearch%3Fq%3DKimmy%2BJKT48%26hl%3Did%26gl%3DID%26ceid%3DID%3Aid');
+                const data = await res.json();
+                
+                if (data.items && data.items.length > 0) {
+                    feedContainer.innerHTML = '';
+                    data.items.slice(0, 5).forEach(item => {
+                        const div = document.createElement('div');
+                        div.className = 'update-item';
+                        div.innerHTML = `
+                            <div class="update-date">🕒 ${new Date(item.pubDate).toLocaleDateString('id-ID')}</div>
+                            <a href="${item.link}" target="_blank" style="color: #333333 !important; text-decoration: none; font-weight: 600;">${item.title}</a>
+                        `;
+                        feedContainer.appendChild(div);
+                    });
+                } else {
+                    feedContainer.innerHTML = '<p style="color: #888888 !important;">Belum ada berita baru hari ini. Sistem terus memantau otomatis!</p>';
+                }
+            } catch (err) {
+                feedContainer.innerHTML = '<p style="color: #888888 !important;">Arsip update aktif. Konten terbarui otomatis secara berkala.</p>';
+            }
+        }
+        fetchAutoUpdates();
+    </script>
+</body>
+</html>
