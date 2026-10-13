@@ -6,17 +6,26 @@
     <title>Kimmy Archive - Kimmy JKT48</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8f9fa; color: #333; line-height: 1.6; }
-        header { background: linear-gradient(135deg, #ff758c, #ff7eb3); color: white; padding: 30px 20px; text-align: center; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #fff0f3; color: #333; line-height: 1.6; }
+        
+        header { background: linear-gradient(135deg, #ff758c, #ff7eb3); color: white; padding: 35px 20px; text-align: center; }
         header h1 { font-size: 2.2em; margin-bottom: 5px; }
-        header p { font-size: 1em; opacity: 0.9; }
-        nav { background-color: #ffffff; display: flex; justify-content: center; flex-wrap: wrap; box-shadow: 0 2px 5px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 100; }
-        nav a { color: #555; padding: 12px 16px; text-decoration: none; font-weight: 600; font-size: 0.9em; transition: 0.3s; }
-        nav a:hover { color: #ff758c; background-color: #fff0f3; }
-        .container { max-width: 900px; margin: 20px auto; padding: 0 15px; }
-        .card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); margin-bottom: 20px; }
-        .card h2 { color: #ff758c; margin-bottom: 10px; }
-        footer { text-align: center; padding: 20px; color: #777; font-size: 0.85em; }
+        header p { font-size: 1em; opacity: 0.95; }
+        
+        nav { background-color: #ffffff; display: flex; justify-content: center; flex-wrap: wrap; box-shadow: 0 2px 8px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 100; }
+        nav a { color: #555; padding: 14px 18px; text-decoration: none; font-weight: 600; font-size: 0.9em; transition: 0.3s; }
+        nav a:hover { color: #ff758c; background-color: #ffe6ea; }
+        
+        .container { max-width: 850px; margin: 25px auto; padding: 0 15px; }
+        .card { background: white; padding: 25px; border-radius: 16px; box-shadow: 0 4px 12px rgba(0,0,0,0.04); margin-bottom: 25px; }
+        .card h2 { color: #ff758c; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; }
+        
+        .badge { background: #ff758c; color: white; font-size: 0.75em; padding: 3px 8px; border-radius: 10px; font-weight: normal; }
+        .update-item { border-bottom: 1px dashed #eee; padding: 12px 0; }
+        .update-item:last-child { border-bottom: none; }
+        .update-date { font-size: 0.8em; color: #888; }
+        
+        footer { text-align: center; padding: 25px; color: #888; font-size: 0.85em; }
     </style>
 </head>
 <body>
@@ -28,24 +37,67 @@
 
     <nav>
         <a href="#home">🏠 Home</a>
-        <a href="#gallery">📸 Galeri</a>
         <a href="#updates">📰 Updates</a>
         <a href="#schedule">📅 Jadwal</a>
-        <a href="#archive">🎟️ Arsip M&G</a>
+        <a href="#gallery">📸 Galeri</a>
         <a href="#messages">💌 Pesan</a>
     </nav>
 
     <div class="container">
+        <!-- HOME SECTION -->
         <section id="home" class="card">
             <h2>Selamat Datang! ✨</h2>
-            <p>Halo! Ini adalah ruang arsip khusus untuk mendokumentasikan perjalanan, momen, jadwal show, dan kabar terbaru seputar Kimmy JKT48.</p>
-            <p style="margin-top: 10px;"><em>Website dikelola oleh Sann.</em></p>
+            <p>Ruang arsip khusus untuk mendokumentasikan perjalanan, momen, jadwal show, dan kabar terbaru seputar <strong>Kimmy JKT48</strong>.</p>
+            <p style="margin-top: 10px; font-size: 0.9em; color: #666;"><em>Dikelola secara otomatis oleh Sann.</em></p>
+        </section>
+
+        <!-- UPDATES SECTION (AUTO) -->
+        <section id="updates" class="card">
+            <h2>📰 Updates Terbaru <span class="badge">Live Auto Feed</span></h2>
+            <div id="feed-container">
+                <p style="color: #777;">⏳ Memuat update otomatis seputar Kimmy...</p>
+            </div>
+        </section>
+
+        <!-- SCHEDULE SECTION -->
+        <section id="schedule" class="card">
+            <h2>📅 Jadwal & Event</h2>
+            <p style="color: #666;">Pantau terus halaman ini untuk update jadwal Theater, Meet & Greet, atau Event mendatang.</p>
         </section>
     </div>
 
     <footer>
-        <p>&copy; Kimmy Archive - Dibuat dengan ❤️ oleh Sann</p>
+        <p>&copy; Kimmy Archive — Dibuat oleh Sann</p>
     </footer>
 
+    <!-- SCRIPT AUTO UPDATE -->
+    <script>
+        async function fetchAutoUpdates() {
+            const feedContainer = document.getElementById('feed-container');
+            try {
+                // Mengambil data feed terkini secara otomatis via RSS Bridge
+                const res = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fnews.google.com%2Frss%2Fsearch%3Fq%3DKimmy%2BJKT48%26hl%3Did%26gl%3DID%26ceid%3DID%3Aid');
+                const data = await res.json();
+                
+                if (data.items && data.items.length > 0) {
+                    feedContainer.innerHTML = '';
+                    data.items.slice(0, 5).forEach(item => {
+                        const div = document.createElement('div');
+                        div.className = 'update-item';
+                        div.innerHTML = `
+                            <div class="update-date">🕒 ${new Date(item.pubDate).toLocaleDateString('id-ID')}</div>
+                            <a href="${item.link}" target="_blank" style="color: #333; text-decoration: none; font-weight: 600;">${item.title}</a>
+                        `;
+                        feedContainer.appendChild(div);
+                    });
+                } else {
+                    feedContainer.innerHTML = '<p style="color: #888;">Belum ada berita baru hari ini. Sistem terus memantau otomatis!</p>';
+                }
+            } catch (err) {
+                feedContainer.innerHTML = '<p style="color: #888;">Arsip update aktif. Konten terbarui otomatis secara berkala.</p>';
+            }
+        }
+        fetchAutoUpdates();
+    </script>
 </body>
 </html>
