@@ -78,7 +78,7 @@
         <section id="biodata" class="card">
             <h2>🎀 Profil & Biodata Kimmy</h2>
             <div class="profile-container">
-                <img src="https://jkt48.com/images/member/profile/victoria_kimberly.jpg" alt="Victoria Kimberly JKT48" class="profile-img" onerror="this.src='https://jkt48.com/images/member/profile/kimmy_jkt48.jpg'">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/JKT48_logo.svg/640px-JKT48_logo.svg.png" alt="Kimmy JKT48" class="profile-img">
                 <table class="bio-table">
                     <tr>
                         <td class="bio-label">Nama Lengkap</td>
@@ -111,17 +111,20 @@
                 </table>
             </div>
             <div style="margin-top: 15px; text-align: center;">
-                <a href="https://jkt48.com/member/detail?member=victoria-kimberly-244&type=PASSION" target="_blank" class="btn-link">🌸 Lihat Detail di JKT48.com</a>
+                <a href="https://jkt48.com/member/detail?member=victoria-kimberly-244&type=PASSION" target="_blank" class="btn-link">🌸 Lihat Detail Profil di JKT48.com</a>
             </div>
         </section>
 
         <!-- GALLERY SECTION -->
         <section id="gallery" class="card">
             <h2>📸 Galeri Foto</h2>
-            <p style="color: #666666 !important; font-size: 0.9em;">Dokumentasi foto Kimmy JKT48.</p>
+            <p style="color: #666666 !important; font-size: 0.9em;">Dokumentasi & tautan media sosial Kimmy JKT48.</p>
             <div class="gallery-grid">
-                <img src="https://jkt48.com/images/member/profile/victoria_kimberly.jpg" alt="Foto Profil Kimmy JKT48" onerror="this.src='https://jkt48.com/images/member/profile/kimmy_jkt48.jpg'">
-                <img src="https://jkt48.com/images/banner.home.jkt48.jpg" alt="JKT48 Event Banner" style="object-fit: cover;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/JKT48_logo.svg/640px-JKT48_logo.svg.png" alt="JKT48 Official">
+            </div>
+            <div style="margin-top: 15px; text-align: center;">
+                <a href="https://x.com/Kimmy_JKT48" target="_blank" class="btn-link">🐦 Akun X (Twitter) Kimmy</a>
+                <a href="https://www.instagram.com/jkt48.kimmy/" target="_blank" class="btn-link">📸 Instagram Kimmy</a>
             </div>
         </section>
 
@@ -147,7 +150,6 @@
         <section id="messages" class="card" style="text-align: center;">
             <h2>💌 Kirim Pesan untuk Kimmy</h2>
             <p style="color: #666666 !important; margin-top: 5px;">Punya ucapan, dukungan, atau fan letter yang mau disampaikan?</p>
-            <!-- MASUKKAN LINK GOOGLE FORM KAMU DI SINI -->
             <a href="PASTE_LINK_GOOGLE_FORM_KAMU_DI_SINI" target="_blank" class="btn-link" style="margin-top: 15px; display: inline-block;">✍️ Tulis Pesan / Support</a>
         </section>
     </div>
@@ -168,21 +170,3 @@
                     feedContainer.innerHTML = '';
                     data.items.slice(0, 5).forEach(item => {
                         const div = document.createElement('div');
-                        div.className = 'update-item';
-                        div.innerHTML = `
-                            <div class="update-date">🕒 ${new Date(item.pubDate).toLocaleDateString('id-ID')}</div>
-                            <a href="${item.link}" target="_blank" style="color: #333333 !important; text-decoration: none; font-weight: 600;">${item.title}</a>
-                        `;
-                        feedContainer.appendChild(div);
-                    });
-                } else {
-                    feedContainer.innerHTML = '<p style="color: #888888 !important;">Belum ada berita baru hari ini. Sistem terus memantau otomatis!</p>';
-                }
-            } catch (err) {
-                feedContainer.innerHTML = '<p style="color: #888888 !important;">Arsip update aktif. Konten terbarui otomatis secara berkala.</p>';
-            }
-        }
-        fetchAutoUpdates();
-    </script>
-</body>
-</html>
