@@ -150,7 +150,8 @@
         <section id="messages" class="card" style="text-align: center;">
             <h2>💌 Kirim Pesan untuk Kimmy</h2>
             <p style="color: #666666 !important; margin-top: 5px;">Punya ucapan, dukungan, atau fan letter yang mau disampaikan?</p>
-            <a href="PASTE_LINK_GOOGLE_FORM_KAMU_DI_SINI" target="_blank" class="btn-link" style="margin-top: 15px; display: inline-block;">✍️ Tulis Pesan / Support</a>
+            <!-- MASUKKAN LINK GOOGLE FORM KAMU DI SINI (GANTI 'https://forms.google.com' DENGAN LINK GOOGLE FORM KAMU) -->
+            <a href="https://forms.gle/GFK8imrz2M5W78q78" target="_blank" class="btn-link" style="margin-top: 15px; display: inline-block;">✍️ Tulis Pesan / Support</a>
         </section>
     </div>
 
@@ -170,3 +171,21 @@
                     feedContainer.innerHTML = '';
                     data.items.slice(0, 5).forEach(item => {
                         const div = document.createElement('div');
+                        div.className = 'update-item';
+                        div.innerHTML = `
+                            <div class="update-date">🕒 ${new Date(item.pubDate).toLocaleDateString('id-ID')}</div>
+                            <a href="${item.link}" target="_blank" style="color: #333333 !important; text-decoration: none; font-weight: 600;">${item.title}</a>
+                        `;
+                        feedContainer.appendChild(div);
+                    });
+                } else {
+                    feedContainer.innerHTML = '<p style="color: #888888 !important;">Belum ada berita baru hari ini. Sistem terus memantau otomatis!</p>';
+                }
+            } catch (err) {
+                feedContainer.innerHTML = '<p style="color: #888888 !important;">Arsip update aktif. Konten terbarui otomatis secara berkala.</p>';
+            }
+        }
+        fetchAutoUpdates();
+    </script>
+</body>
+</html>
