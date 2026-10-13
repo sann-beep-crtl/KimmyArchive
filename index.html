@@ -24,6 +24,15 @@
         .update-item { border-bottom: 1px dashed #eee; padding: 12px 0; }
         .update-item:last-child { border-bottom: none; }
         .update-date { font-size: 0.8em; color: #888; }
+
+        /* Grid Galeri */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 15px; }
+        .gallery-grid img { width: 100%; height: 200px; object-fit: cover; border-radius: 12px; transition: transform 0.3s; }
+        .gallery-grid img:hover { transform: scale(1.03); }
+
+        /* Style Form Pesan */
+        .btn-msg { display: inline-block; background: #ff758c; color: white; padding: 12px 24px; text-decoration: none; border-radius: 25px; font-weight: bold; transition: background 0.3s; margin-top: 10px; }
+        .btn-msg:hover { background: #ff5271; }
         
         footer { text-align: center; padding: 25px; color: #888; font-size: 0.85em; }
     </style>
@@ -38,8 +47,8 @@
     <nav>
         <a href="#home">🏠 Home</a>
         <a href="#updates">📰 Updates</a>
-        <a href="#schedule">📅 Jadwal</a>
         <a href="#gallery">📸 Galeri</a>
+        <a href="#schedule">📅 Jadwal</a>
         <a href="#messages">💌 Pesan</a>
     </nav>
 
@@ -59,10 +68,31 @@
             </div>
         </section>
 
+        <!-- GALLERY SECTION -->
+        <section id="gallery" class="card">
+            <h2>📸 Galeri Photoshoot</h2>
+            <p style="color: #666; font-size: 0.9em;">Dokumentasi momen & penampilan Kimmy JKT48.</p>
+            <div class="gallery-grid">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="Kimmy Photo 1">
+                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80" alt="Kimmy Photo 2">
+                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80" alt="Kimmy Photo 3">
+            </div>
+        </section>
+
         <!-- SCHEDULE SECTION -->
         <section id="schedule" class="card">
             <h2>📅 Jadwal & Event</h2>
-            <p style="color: #666;">Pantau terus halaman ini untuk update jadwal Theater, Meet & Greet, atau Event mendatang.</p>
+            <div style="background: #fff0f3; padding: 15px; border-radius: 10px; margin-top: 10px;">
+                <h3 style="color: #ff758c; font-size: 1em;">🎭 JKT48 Theater Show & Event</h3>
+                <p style="font-size: 0.9em; color: #555; margin-top: 5px;">Pantau pengumuman resmi dan jadwal show terbaru langsung melalui sistem auto-feed di atas atau aplikasi resmi JKT48.</p>
+            </div>
+        </section>
+
+        <!-- MESSAGES SECTION -->
+        <section id="messages" class="card" style="text-align: center;">
+            <h2>💌 Kirim Pesan untuk Kimmy</h2>
+            <p style="color: #666; margin-top: 5px;">Punya ucapan, dukungan, atau fan letter yang mau disampaikan?</p>
+            <a href="https://forms.google.com" target="_blank" class="btn-msg">✍️ Tulis Pesan / Support</a>
         </section>
     </div>
 
@@ -75,7 +105,6 @@
         async function fetchAutoUpdates() {
             const feedContainer = document.getElementById('feed-container');
             try {
-                // Mengambil data feed terkini secara otomatis via RSS Bridge
                 const res = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fnews.google.com%2Frss%2Fsearch%3Fq%3DKimmy%2BJKT48%26hl%3Did%26gl%3DID%26ceid%3DID%3Aid');
                 const data = await res.json();
                 
